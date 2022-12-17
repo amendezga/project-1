@@ -13,15 +13,33 @@ function getPlayerName() {
         success: function(data) {
         console.log(data)
         userPlayer = `${data.first_name} ${data.last_name}`
-        console.log(userPlayer);
+        console.log('this is in the function ' + userPlayer);
         }
     });
 }
 
+getPlayerName();
+
 $(document).ready(function() {
-    $('button').click(function() {
+    $('.start-game').click(function() {
       $('.game-container').empty()
-      getPlayerName()
+      console.log('this is after clicking the button ' + userPlayer)
       $('.game-container').text(`Your player is ... ${userPlayer}`);
     });
   });
+
+
+
+  function simulateShots(threePct) {
+    const shotResults = [];
+  
+    for (let i = 0; i < 5; i++) {
+      const shotChance = Math.random();
+      if (shotChance < threePct) {
+       shotResults.push("Shot made!");
+      } else {
+        shotResults.push("Shot missed!");
+      }
+    }
+  
+  }
