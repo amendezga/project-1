@@ -11,3 +11,9 @@
     height: 300px;
     background-color: #eee;
   }
+
+  body {
+    background-image: url('/basketballCourt.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+  }
