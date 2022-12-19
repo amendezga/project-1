@@ -43,7 +43,6 @@ console.log(compIDs)
 $(document).ready(function() {
     $('.start-game').click(function() {
       $('.game-container').empty()
-      console.log('this is after clicking the button ' + userPlayer)
       $('.game-container').text(`Your player is ... ${userPlayer}`);
     });
   });
