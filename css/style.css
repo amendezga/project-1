@@ -25,3 +25,14 @@
     background-color: red;
     color: white;
   }
+
+  .next1 {
+    background-color: red;
+    color: white;
+  }
+
+  .next {
+    flex-direction: column-reverse;
+    margin: 0;
+    padding: 0;
+  }
