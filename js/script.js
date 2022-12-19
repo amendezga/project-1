@@ -5,20 +5,40 @@ function getPlayerID() {
 const userID = getPlayerID();
 
 let userPlayer;
+let compPlayers = [];
+let compIDs = []
 
-function getPlayerName() {
+function getUserName() {
     $.ajax({
         type: 'GET',
         url: 'https://www.balldontlie.io/api/v1/players/' + userID,
         success: function(data) {
-        console.log(data)
-        userPlayer = `${data.first_name} ${data.last_name}`
-        console.log('this is in the function ' + userPlayer);
+        userPlayer = `${data.first_name} ${data.last_name}`;
         }
     });
 }
 
-getPlayerName();
+function getOpponents() { 
+    for (let i = 0; i < 3; i++) {
+      let playerID = getPlayerID()
+      compIDs.push(playerID)
+      let comp = ''
+      let id = $.ajax({
+        type: 'GET',
+        url: `https://www.balldontlie.io/api/v1/players/${playerID}`,
+        success: function(data) {
+        comp = `${data.first_name} ${data.last_name}`;
+        compPlayers.push(comp)
+        }
+    })
+  }
+}
+
+getUserName();
+getOpponents();
+
+console.log(compPlayers)
+console.log(compIDs)
 
 $(document).ready(function() {
     $('.start-game').click(function() {
@@ -36,9 +56,9 @@ $(document).ready(function() {
     for (let i = 0; i < 5; i++) {
       const shotChance = Math.random();
       if (shotChance < threePct) {
-       shotResults.push("Shot made!");
+       shotResults.push(`Shot ${i} made!`);
       } else {
-        shotResults.push("Shot missed!");
+        shotResults.push(`Shot ${i} missed!`);
       }
     }
   
