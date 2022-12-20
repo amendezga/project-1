@@ -18,6 +18,7 @@
   body {
     background-image: url('/background/basketballCourt.jpg');
     background-size: cover;
+    background-color: darkslateblue;
     background-attachment: fixed;
   }
 
