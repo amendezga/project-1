@@ -16,7 +16,7 @@
   }
 
   body {
-    background-image: url('https://images.pexels.com/photos/2291004/pexels-photo-2291004.jpeg');
+    background-image: url('./basketballCourt.jpg');
     background-size: cover;
     background-attachment: fixed;
   }
