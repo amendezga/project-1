@@ -51,17 +51,28 @@ $(document).ready(function () {
   });
 });
 
+let userMakes = 0;
+
+// THIS BELOW IS NOT WORKING, FIGURE THIS OUT FIRST
+
+// $('.next1').click(function () {
+//     $('.game-container').html(
+//       `You made ${userMakes} shots!
+//       <br><br>
+//       And your opponent made ${opponentMakes} shots. 
+//       <br<br><br><br><br><br><br><br><br><br>
+//       <button class="next2">Next</button></div>`);
+//   });
+
 
 
 function simulateShots(threePct) {
-  const shotResults = [];
-
   for (let i = 0; i < 5; i++) {
     const shotChance = Math.random();
     if (shotChance < threePct) {
-      shotResults.push(`Shot ${i} made!`);
+      userMakes = (userMakes + 1);
     } else {
-      shotResults.push(`Shot ${i} missed!`);
+      userMakes = userMakes;
     }
   }
 
