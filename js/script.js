@@ -45,11 +45,14 @@ $(document).ready(function () {
     $('.game-container').html(
       `Your player is ... ${userPlayer}
       <br><br>
-      And your opponent is ... ${compPlayers[0]} 
-      <br<br><br><br><br><br><br><br><br><br>
-      <button class="next1">Next</button></div>`);
+      And your opponent is ... ${compPlayers[0]}`,
+      );
+    $('.start-game').addClass('next1');
+    $('.start-game').removeClass('start-game');
+    $('.next1').text('Next');
   });
 });
+
 
 let userMakes = 0;
 
