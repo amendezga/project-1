@@ -33,16 +33,14 @@ function getOpponents() {
       },
     }).then(function() {
       let stats = 0;
-      for (let i = 0; i < 3; i++) {
         $.ajax({
           type: 'GET',
           url: `https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=${compIDs[i]}`,
           success: function (dataS) {
-            stats = dataS[0]['fg3_pct'];
+            stats = dataS[0].fg3_pct;
             compStats.push(stats);
-          }
+           }
         })
-      }
     } )
   }
 }
@@ -52,6 +50,7 @@ getOpponents();
 
 console.log(compPlayers)
 console.log(compIDs)
+console.log(compStats)
 
 $(document).ready(function () {
   $('.start-game').click(function () {
