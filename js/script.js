@@ -6,7 +6,8 @@ const userID = getPlayerID();
 
 let userPlayer;
 let compPlayers = [];
-let compIDs = []
+let compStats = [];
+let compIDs = [];
 
 function getUserName() {
   $.ajax({
@@ -14,7 +15,7 @@ function getUserName() {
     url: 'https://www.balldontlie.io/api/v1/players/' + userID,
     success: function (data) {
       userPlayer = `${data.first_name} ${data.last_name}`;
-    }
+    } 
   });
 }
 
@@ -23,14 +24,26 @@ function getOpponents() {
     let playerID = getPlayerID()
     compIDs.push(playerID)
     let comp = ''
-    let id = $.ajax({
+    $.ajax({
       type: 'GET',
       url: `https://www.balldontlie.io/api/v1/players/${playerID}`,
       success: function (data) {
         comp = `${data.first_name} ${data.last_name}`;
-        compPlayers.push(comp)
+        compPlayers.push(comp);
+      },
+    }).then(function() {
+      let stats = 0;
+      for (let i = 0; i < 3; i++) {
+        $.ajax({
+          type: 'GET',
+          url: `https://www.balldontlie.io/api/v1/season_averages?season=2019&player_ids[]=${compIDs[i]}`,
+          success: function (dataS) {
+            stats = dataS[0]['fg3_pct'];
+            compStats.push(stats);
+          }
+        })
       }
-    })
+    } )
   }
 }
 
@@ -46,27 +59,20 @@ $(document).ready(function () {
       `Your player is ... ${userPlayer}
       <br><br>
       And your opponent is ... ${compPlayers[0]}`,
-      );
+    );
     $('.start-game').addClass('next1');
     $('.start-game').removeClass('start-game');
     $('.next1').text('Next');
   });
 });
 
+$('.next1').click(function () {
+
+  $('.game-container').empty();
+  $('.game-container').html(`You made ${userShots} shots. Your opponent made ${opponentShots} shots.`);
+});
 
 let userMakes = 0;
-
-// THIS BELOW IS NOT WORKING, FIGURE THIS OUT FIRST
-
-// $('.next1').click(function () {
-//     $('.game-container').html(
-//       `You made ${userMakes} shots!
-//       <br><br>
-//       And your opponent made ${opponentMakes} shots. 
-//       <br<br><br><br><br><br><br><br><br><br>
-//       <button class="next2">Next</button></div>`);
-//   });
-
 
 
 function simulateShots(threePct) {
