@@ -16,7 +16,7 @@
   }
 
   body {
-    background-image: url('./basketballCourt.jpg');
+    background-image: url('./background/basketballCourt.jpg');
     background-size: cover;
     background-attachment: fixed;
   }
