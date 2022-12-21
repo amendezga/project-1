@@ -10,7 +10,7 @@ This app is still a work in progress but the general idea is using an API to pul
 - Ball Don't Lie API
 
 ## Screenshots
-![Screenshot of project](https://imgur.com/a/RyzhI1R)
+![Screenshot of project](https://i.imgur.com/u1g97zO.png)
 
 ## Current State of the App
 Pre-Beta: the app is able to pull player names, but it's not yet able to pull 3 Point FG %.
