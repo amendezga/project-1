@@ -37,7 +37,7 @@ function getOpponents() {
           type: 'GET',
           url: `https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=${compIDs[i]}`,
           success: function (dataS) {
-            stats = dataS[0].fg3_pct;
+            stats = dataS.data[0].fg3_pct;
             compStats.push(stats);
            }
         })
